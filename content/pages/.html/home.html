@@ -132,6 +132,45 @@ title: Hello, world.</h2>
 <p>Who cares what you did.</p>
 <p><img src="/content/images/hello.jpg" alt="Hello, world" /></p>
 <p>→<em>Onward...</em>&lt;-</p>
+<h1 id="query">Query</h1>
+<p>Organization, and Account information for</p>
+<ul>
+<li>Active engagements for the <code>2019</code> tax year</li>
+<li>Active organizations</li>
+<li>Organizations with the <code>ERO</code> filing type</li>
+<li>Active accounts</li>
+</ul>
+<div class="lang-sql editor-colors"><div style="color:Black;background-color:White;"><pre>
+<span style="color:Green;">--------------------</span>
+<span style="color:Blue;">select</span>  t.Year <span style="color:Green;">--derived from an engagement</span>
+,		o.vc_BusinessName
+,		a.fein <span style="color:Green;">--derived from the orgs account</span>
+,		Account = a.Name
+,		a.DTECode <span style="color:Green;">--derived from the orgs account</span>
+<span style="color:Green;">--------------------</span>
+<span style="color:Blue;">from</span>    engagement e
+<span style="color:Green;">--------------------</span>
+<span style="color:Blue;">join</span>    taxyear t 
+<span style="color:Blue;">on</span>      t.ID = e.TaxYearID
+<span style="color:Green;">--------------------</span>
+<span style="color:Blue;">join</span>    organization o 
+<span style="color:Blue;">on</span>      o.in_id = e.OrganizationID
+<span style="color:Green;">--------------------</span>
+<span style="color:Blue;">join</span>	account a
+<span style="color:Blue;">on</span>		a.ID = o.AccountID
+<span style="color:Green;">--------------------</span>
+<span style="color:Blue;">where</span>   1=1
+<span style="color:Blue;">and</span> 	o.vc_FilingType = <span style="color:#A31515;">&#39;ERO&#39;</span> <span style="color:Green;">--only orgs with ERO filing type</span>
+<span style="color:Blue;">and</span>     t.Year = 2019 <span style="color:Green;">--engagements for 2019 tax year</span>
+<span style="color:Blue;">and</span>		a.active = 1 <span style="color:Green;">--engagements, orgs, account is active</span>
+<span style="color:Blue;">and</span>		o.active = 1 <span style="color:Green;">--engagements, org is active</span>
+<span style="color:Blue;">and</span>		e.isdeleted = 0 <span style="color:Green;">--engagements, org is active</span>
+<span style="color:Green;">--------------------</span>
+<span style="color:Blue;">order</span> 
+<span style="color:Blue;">by</span> o.vc_BusinessName
+
+</pre></div>
+</div>
 
 
 

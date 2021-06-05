@@ -12,9 +12,9 @@
   "enableDarkMode": true,
   "enableEditButton": true,
   "enableDatestamp": true,
-  "enableGithubLink": false,
-  "enableContact": false,
-  "enableNetlifyCMS": false,
+  "enableGithubLink": true,
+  "enableContact": true,
+  "enableNetlifyCMS": true,
   "enableComments": true,
   "enableEncryption": false,
   "enablePageNavigation": true

@@ -6,7 +6,7 @@
   "url": "https://goofy-heisenberg-e6e7ce.netlify.app",
   "githubUrl": "https://github.com/mrjohnsonit/spacebook",
   "githubBranch": "main",
-  "navigationStyle": "vertical",
+  "navigationStyle": "horizontal",
   "emoji": "💥",
   "enableSearch": true,
   "enableDarkMode": true,
